@@ -33,7 +33,14 @@
 		}
 
 		protected function _register_controls() {
-			$this->start_controls_section (
+			$this->pafe_post_list_controls();
+		}
+        
+        protected function register_controls() {
+			$this->pafe_post_list_controls();
+		}
+        public function pafe_post_list_controls(){
+            $this->start_controls_section (
 				'pafe_posts_list_section',
 				[
 					'label' => __( 'Query', 'pafe' ),
@@ -1102,8 +1109,8 @@
 					],
 				]
 			);
-			$this->end_controls_section();		
-		}		 
+			$this->end_controls_section();
+        }
 		protected function render() {
 			$settings = $this->get_settings_for_display();
 			if ( $settings['pafe_posts_list_post_taxonomy'] ) {

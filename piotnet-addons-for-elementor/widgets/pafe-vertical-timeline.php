@@ -34,7 +34,15 @@
 	}
 
 	protected function _register_controls() {	
-		$this->start_controls_section(
+        $this->pafe_vertical_timeline_controls();
+	}
+
+    protected function register_controls() {	
+        $this->pafe_vertical_timeline_controls();
+	}
+
+    public function pafe_vertical_timeline_controls(){
+        $this->start_controls_section(
 			'pafe_vertical_timeline_custome_content_section',
 			[
 				'label' => __( 'Content', 'pafe' ),
@@ -579,7 +587,7 @@
 			] 
 		);
 		$this->end_controls_section();
-	}	
+    }
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		?>

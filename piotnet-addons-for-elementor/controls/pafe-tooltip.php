@@ -270,9 +270,11 @@ require_once( __DIR__ . '/controls-manager.php' );
 					$content = '<img src="'. $settings['pafe_tooltip_content_image']['url'] . '"alt="">';
 				} elseif ($settings['pafe_tooltip_content_type'] == 'saved_template') {
 					$content = do_shortcode($settings['pafe_tooltip_content_saved_template']);
-				}   
+				}
+                $safe_content = wp_kses(htmlspecialchars_decode($content, ENT_QUOTES), wp_kses_allowed_html('post'));
+                $safe_content = preg_replace('/\s*on\w+="[^"]*"/i', '', $safe_content);
 				$element->add_render_attribute( '_wrapper', [
-					'data-tippy-content' => $content,
+					'data-tippy-content' => $safe_content,
 					'data-pafe-tippy-options' => json_encode( $tippy_options ),
 				]);
 			}

@@ -14,7 +14,7 @@ jQuery(document).ready(function( $ ) {
 
 		var options = JSON.parse(this.getAttribute('data-pafe-tippy-options')),
 			content = $(this).attr('data-tippy-content');
-			options['content'] = content;
+			options['content'] = clearHtml(content);
 			if(screen.width < 768 && options.placement){
 				delete options.placement
 			}
@@ -26,7 +26,7 @@ jQuery(document).ready(function( $ ) {
 
 
 		} else if ( $(this).hasClass('elementor-column') ) {
-			var appendTo = this.querySelector('.elementor-column-wrap');
+			var appendTo = this
 			options['appendTo'] = appendTo;
 			tippy( this , options);
 
@@ -46,7 +46,6 @@ jQuery(document).ready(function( $ ) {
 			tippy( $icon , options);
 
 		} else if ( $image !== null && $image[0] !== undefined ) {
-			console.log('000', screen.width);
 			options['appendTo'] = 'parent';
 			tippy( $image, options);
 		} else if ( $video !== null && $video[0] !== undefined ) {
@@ -58,7 +57,7 @@ jQuery(document).ready(function( $ ) {
 			tippy( $textEditor , options);
 
 		} else {
-			var appendTo = this.querySelector('.elementor-widget-container');
+			var appendTo = this;
 			options['appendTo'] = appendTo;
 			tippy( this, options);
 		}
@@ -81,7 +80,7 @@ jQuery(document).ready(function( $ ) {
 				duration = options.duration,
 				distance = options.distance,
 				placement = options.placement,
-				content = $(this).attr('data-tippy-content');
+				content = clearHtml($(this).attr('data-tippy-content'));
 			if(elementType == 'popup') {
 				if ($(this).hasClass('elementor-section')) {
 					var appendTo = this.querySelector('.elementor-container');
@@ -210,4 +209,12 @@ jQuery(document).ready(function( $ ) {
 			}
 		});
 	});
+
+    function clearHtml (html) {
+        let tempDiv = $('<div></div>').append(html);
+        tempDiv.find('*').each(function() {
+            $(this).removeAttr('onerror');
+        });
+        return tempDiv.html();
+    }
 });    

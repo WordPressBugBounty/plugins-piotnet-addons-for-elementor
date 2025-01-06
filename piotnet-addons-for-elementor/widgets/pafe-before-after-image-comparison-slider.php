@@ -33,9 +33,15 @@ class PAFE_Before_After_Image_Comparison_Slider extends \Elementor\Widget_Base {
 			'pafe-widget-style-free'
 		];
 	}
-
 	protected function _register_controls() {
-		$this->start_controls_section(
+		$this->pafe_image_comparison_slider_controls();
+	}
+    protected function register_controls() {
+		$this->pafe_image_comparison_slider_controls();
+	}
+
+    protected function pafe_image_comparison_slider_controls (){
+        $this->start_controls_section(
 			'pafe_before_after_image_comparison_slider_section',
 			[
 				'label' => __( 'Images', 'pafe' ),
@@ -182,7 +188,7 @@ class PAFE_Before_After_Image_Comparison_Slider extends \Elementor\Widget_Base {
 		);
 
 		$this->end_controls_section();
-	}
+    }
 
 	protected function render() {
 

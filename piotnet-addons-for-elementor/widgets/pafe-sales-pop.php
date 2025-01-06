@@ -33,7 +33,15 @@
 		}
 		
 		protected function _register_controls() {
-			$this->start_controls_section(
+			$this->pafe_sales_pop_controls();
+		}
+
+        protected function register_controls() {
+			$this->pafe_sales_pop_controls();
+		}
+
+        public function pafe_sales_pop_controls(){
+            $this->start_controls_section(
 				'pafe_sales_pop_section',
 				[
 					'label' => __( 'Settings', 'pafe' ),
@@ -505,7 +513,7 @@
 				]
 			);
 			$this->end_controls_section();
-		}	
+        }
 		protected function render() {
 		$settings = $this->get_settings_for_display(); 
 		if ($settings['pafe_sales_pop_random']) {

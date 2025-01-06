@@ -33,7 +33,15 @@
 		}
 		
 		protected function _register_controls() {
-			$this->start_controls_section(
+            $this->pafe_countdown_cart_controls();
+		}
+
+        protected function register_controls() {
+            $this->pafe_countdown_cart_controls();
+		}
+        
+        public function pafe_countdown_cart_controls(){
+            $this->start_controls_section(
 				'pafe_countdown_cart_section',
 				[
 					'label' => __( 'Setting', 'pafe' ),
@@ -394,7 +402,7 @@
 			$this->end_controls_tabs();
 			
 			$this->end_controls_section(); 
-		}	
+        }
 		protected function render() { 
 
 			$settings = $this->get_settings_for_display();

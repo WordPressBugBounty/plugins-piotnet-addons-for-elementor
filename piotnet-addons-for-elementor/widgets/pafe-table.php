@@ -40,8 +40,15 @@ class PAFE_Table extends \Elementor\Widget_Base {
 
 /** Insert Content Section**/
 	protected function _register_controls() {
-		
-		$this->start_controls_section(
+        $this->pafe_table_controls();
+	}
+
+    protected function register_controls() {
+        $this->pafe_table_controls();
+	}
+
+    public function pafe_table_controls(){
+        $this->start_controls_section(
 			'pafe_table_layout_section',
 			[
 				'label' => __( 'Layout', 'pafe' ),
@@ -972,8 +979,7 @@ class PAFE_Table extends \Elementor\Widget_Base {
 			$this->end_controls_tabs();
 
 		$this->end_controls_section();
-
-	}
+    }
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();

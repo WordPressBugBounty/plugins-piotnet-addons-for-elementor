@@ -3,7 +3,7 @@
  * Plugin Name: Piotnet Addons For Elementor
  * Description: Piotnet Addons For Elementor (PAFE) adds many new features for Elementor
  * Plugin URI:  https://pafe.piotnet.com/
- * Version:     2.4.31
+ * Version:     2.4.32
  * Author:      Piotnet
  * Author URI:  https://piotnet.com/
  * Text Domain: pafe
@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'PAFE_VERSION', '2.4.31' );
+define( 'PAFE_VERSION', '2.4.32' );
 
 define( 'PAFE_DIR', plugin_dir_path(__FILE__));
 define( 'PAFE_URL', plugins_url( '/', __FILE__ ) );
@@ -172,6 +172,11 @@ final class Piotnet_Addons_For_Elementor {
 	    if(!isset($atts['id']) || empty($atts['id'])){
 	        return '';
 	    }
+        
+        if(get_post_status($atts['id']) === 'draft'  && !current_user_can('edit_post', $atts['id'])){
+            $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();
+            return $is_editor ? _e('<div class="elementor-alert elementor-alert-danger">Invalid Data: The Template ID cannot be the same as the currently edited template. Please choose a different one.</div>') : '';
+        }
 
 	    $post_id = $atts['id'];
 	    $response = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($post_id);

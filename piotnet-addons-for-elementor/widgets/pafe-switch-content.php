@@ -35,7 +35,15 @@ class PAFE_Switch_Content extends \Elementor\Widget_Base {
 	}
 	
 	protected function _register_controls() {
-		$this->start_controls_section(
+		$this->pafe_switch_content_controls();
+	}
+
+    protected function register_controls() {
+		$this->pafe_switch_content_controls();
+	}
+
+    public function pafe_switch_content_controls(){
+        $this->start_controls_section(
 			'pafe_switch_content_primary_section',
 			[
 				'label' => __( 'Section 1', 'pafe' ),
@@ -530,7 +538,7 @@ class PAFE_Switch_Content extends \Elementor\Widget_Base {
 		$this->end_controls_tabs();	
  
 		$this->end_controls_section();
-	}
+    }
 	protected function render() {
 
 		$settings = $this->get_settings_for_display();

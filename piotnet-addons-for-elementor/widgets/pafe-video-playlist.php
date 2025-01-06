@@ -53,7 +53,15 @@
 			];
 		}
 		protected function _register_controls() {
-			$this->start_controls_section(
+			$this->pafe_video_playlist_controls();	
+		}
+
+        protected function register_controls() {
+			$this->pafe_video_playlist_controls();	
+		}
+
+        public function pafe_video_playlist_controls(){
+            $this->start_controls_section(
 				'pafe_video_playlist_title_section',
 				[
 					'label' => __( 'Video Playlist Title', 'pafe' ),
@@ -270,8 +278,8 @@
 					],
 				]
 			);			
-			$this->end_controls_section();	
-		}	
+			$this->end_controls_section();
+        }
 		protected function render() { 
 			$settings = $this->get_settings_for_display();          	
 			?>	

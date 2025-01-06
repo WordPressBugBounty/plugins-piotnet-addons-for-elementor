@@ -37,26 +37,21 @@ class PAFE_Progress_Bar extends \Elementor\Widget_Base {
 
 /** Insert Content Section**/
 	protected function _register_controls() {
-		$this->start_controls_section(
+        $this->pafe_progressbar_controls();
+	}
+
+    protected function register_controls() {
+        $this->pafe_progressbar_controls();
+	}
+
+    public function pafe_progressbar_controls(){
+        $this->start_controls_section(
 			'pafe_progressbar',
 			[
 				'label' => __( 'Progress Bar Content', 'pafe' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-
-			// $this->add_control(
-			// 	'pafe_progressbar_type',
-			// 	[
-			// 		'label' => __( 'Type', 'pafe' ),
-			// 		'type' => \Elementor\Controls_Manager::SELECT,
-			// 		'default' => 'circle',
-			// 		'options' => [
-			// 			'circle'  => __( 'Circle', 'pafe' ),
-			// 			'line'  => __( 'Line', 'pafe' ),
-			// 		],
-			// 	]
-			// );
 
 			$this->add_control(
 				'pafe_progressbar_percentage',
@@ -278,9 +273,7 @@ class PAFE_Progress_Bar extends \Elementor\Widget_Base {
 		);
 
 		$this->end_controls_section();
-
-	}
-
+    }
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();

@@ -33,7 +33,15 @@
 		}
 		
 		protected function _register_controls() {
-			$this->start_controls_section (
+            $this->pafe_product_tabs_controls();
+		}
+
+        protected function register_controls() {
+            $this->pafe_product_tabs_controls();
+		}
+
+        public function pafe_product_tabs_controls(){
+            $this->start_controls_section (
 				'pafe_product_tabs_section', [
 					'label' => __( 'Setting', 'pafe' ),
 				] 
@@ -64,8 +72,7 @@
 				] 
 			); 	
 			$this->end_controls_tabs();	
-			
-		}
+        }
 		protected function render() {
 		$settings = $this->get_settings_for_display(); 
 		
