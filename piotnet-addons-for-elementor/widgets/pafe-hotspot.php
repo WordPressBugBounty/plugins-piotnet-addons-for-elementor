@@ -293,7 +293,6 @@ class PAFE_Hotspot extends \Elementor\Widget_Base
             [
                 'label' => __('Marker Text', 'pafe'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'placeholder' => __('', 'pafe'),
                 'default' => 'Marker',
                 'condition' => [
                     'pafe_hotspot_marker_type' => 'text',
@@ -628,7 +627,6 @@ class PAFE_Hotspot extends \Elementor\Widget_Base
         $this->add_control(
             'pafe_hotspot_list',
             [
-                'label' => __('', 'pafe'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
@@ -650,7 +648,7 @@ class PAFE_Hotspot extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($settings, 'pafe_hotspot_thumbnail', 'pafe_hotspot_image_upload');
+        echo wp_kses_post(\Elementor\Group_Control_Image_Size::get_attachment_image_html($settings, 'pafe_hotspot_thumbnail', 'pafe_hotspot_image_upload'));
         ?>
 
         <?php if ($settings['pafe_hotspot_list']) {

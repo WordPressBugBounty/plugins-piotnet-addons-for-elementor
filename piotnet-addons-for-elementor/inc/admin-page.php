@@ -2,7 +2,7 @@
 	<div class="pafe-header">
 		<div class="pafe-header__left">
 			<div class="pafe-header__logo">
-				<img src="<?php echo plugin_dir_url( __FILE__ ) . '../assets/images/piotnet-logo.png'; ?>" alt="">
+				<img src="<?php echo esc_url(plugin_dir_url( __FILE__ ) . '../assets/images/piotnet-logo.png'); ?>" alt="">
 			</div>
 			<h2 class="pafe-header__headline">Piotnet Addons For Elementor Settings (PAFE PRO)</h2>
 		</div>
@@ -19,7 +19,7 @@
 	    	<br>
 	    	<div class="pafe-toggle-features__button" data-pafe-toggle-features-enable>Enable All</div>
 	    	<div class="pafe-toggle-features__button pafe-toggle-features__button--disable" data-pafe-toggle-features-disable>Disable All</div>
-	    	<div class="pafe-toggle-features__button" data-pafe-features-save><?php _e('Save Settings','pafe'); ?></div>
+	    	<div class="pafe-toggle-features__button" data-pafe-features-save><?php esc_attr_e('Save Settings','pafe'); ?></div>
 	    	<br>
 	    </div>
 	    <?php
@@ -53,10 +53,10 @@
 				?>
 					<li>
 						<label class="pafe-switch">
-							<input type="checkbox"<?php if( empty( $feature_disable ) ) : ?> name="<?php echo $feature['option']; ?>"<?php endif; ?> value="1" <?php checked( $feature_enable, 1 ); ?><?php if( !empty( $feature_disable ) ) { echo ' disabled'; } ?>>
+							<input type="checkbox"<?php if( empty( $feature_disable ) ) : ?> name="<?php echo esc_attr($feature['option']); ?>"<?php endif; ?> value="1" <?php checked( $feature_enable, 1 ); ?><?php if( !empty( $feature_disable ) ) { echo ' disabled'; } ?>>
 							<span class="pafe-slider round"></span>
 						</label>
-						<a href="<?php echo $feature['url']; ?>" target="_blank"><?php echo $feature['name']; ?><?php if( $feature['pro'] ) : ?><span class="pafe-pro-version"></span><?php endif; ?></a>
+						<a href="<?php echo esc_url($feature['url']); ?>" target="_blank"><?php echo esc_attr($feature['name']); ?><?php if( $feature['pro'] ) : ?><span class="pafe-pro-version"></span><?php endif; ?></a>
 					</li>
 				<?php endforeach; ?>
 			</ul>
@@ -65,7 +65,7 @@
 		    	<br>
 		    	<div class="pafe-toggle-features__button" data-pafe-toggle-features-enable>Enable All</div>
 		    	<div class="pafe-toggle-features__button pafe-toggle-features__button--disable" data-pafe-toggle-features-disable>Disable All</div>
-		    	<div class="pafe-toggle-features__button" data-pafe-features-save><?php _e('Save Settings','pafe'); ?></div>
+		    	<div class="pafe-toggle-features__button" data-pafe-features-save><?php esc_attr_e('Save Settings','pafe'); ?></div>
 		    	<br>
 		    </div>
 		</form>
@@ -101,15 +101,15 @@
 						    )
 						);
 					?>
-					<div class="pafe-license__description"><?php _e('Enter Your Account at','pafe'); ?> <a href="https://pafe.piotnet.com/my-account/" target="_blank">https://pafe.piotnet.com/my-account/</a> <?php _e('to enable all features and receive new updates. Status: ','pafe'); ?>
+					<div class="pafe-license__description"><?php esc_attr_e('Enter Your Account at','pafe'); ?> <a href="https://pafe.piotnet.com/my-account/" target="_blank">https://pafe.piotnet.com/my-account/</a> <?php esc_attr_e('to enable all features and receive new updates. Status: ','pafe'); ?>
 						<?php 
 							if ( is_wp_error( $response ) ) {
 							    $error_message = $response->get_error_message();
-							    echo "Something went wrong: $error_message";
+							    echo esc_html("Something went wrong: $error_message");
 							} else {
 							    $response_body = wp_remote_retrieve_body( $response );
 							    $response_body_trim = trim($response_body);
-							    echo $response_body;
+							    echo wp_kses_post($response_body);
 
 							   	if ($response_body_trim == 'Logged in successfully.') {
 									update_option( '_site_transient_update_plugins', '' );

@@ -117,7 +117,7 @@ class PAFE_Dual_Color_Headline extends \Elementor\Widget_Base
             [
                 'label' => __('Link', 'pafe'),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => __('https://your-link.com', 'plugin-domain'),
+                'placeholder' => __('https://your-link.com', 'pafe'),
                 'show_external' => true,
                 'default' => [
                     'url' => '',
@@ -406,7 +406,7 @@ class PAFE_Dual_Color_Headline extends \Elementor\Widget_Base
         $allowed_tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span'];
         $html_tag = in_array($settings['pafe_dual_color_html_tag'], $allowed_tags) ? esc_attr($settings['pafe_dual_color_html_tag']) : 'h2';
         ?>
-        <<?php echo $html_tag; ?> class="pafe-dual-color-headline">
+        <<?php echo esc_html($html_tag); ?> class="pafe-dual-color-headline">
             <?php if (!empty($settings['pafe_dual_color_link']['url'])):
                 echo '<a href="' . esc_url($settings['pafe_dual_color_link']['url']) . '"' . esc_attr($target) . esc_attr($nofollow) . '>'
                     ?>

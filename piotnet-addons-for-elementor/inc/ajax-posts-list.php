@@ -49,17 +49,17 @@
 	<div class="pafe-post-list__left">
 		<div class="pafe-card-left">
 			<?php if ($layout !== 'layout_3'): ?>
-			<div class="pafe-card-left__inner" style="background-image: url('<?php echo get_the_post_thumbnail_url();?>');">
+			<div class="pafe-card-left__inner" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url());?>');">
 			<?php endif; ?> 
 				<?php if ($layout == 'layout_3'): ?>
-				<div class="pafe-card-left__inner-layout_3" style="background-image: url('<?php echo get_the_post_thumbnail_url();?>');"></div>	
+				<div class="pafe-card-left__inner-layout_3" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url());?>');"></div>	
 				<?php endif; ?>
 			 		<a class="<?php if ($layout == 'layout_3') {
 						echo 'pafe-card-left__content-layout_3';
 					} else {
 						echo 'pafe-card-left__content';
-					}?>" href="<?php echo get_permalink(); ?>">	
-					<div class="pafe-card-left__title"><?php echo get_the_title(); ?></div>
+					}?>" href="<?php echo esc_url(get_permalink()); ?>">	
+					<div class="pafe-card-left__title"><?php echo wp_kses_post(get_the_title()); ?></div>
 					<div class="pafe-card-left__info">
 						<?php if ($author == 'yes'): ?>
 						<span class="pafe-card-left__author">
@@ -85,13 +85,13 @@
 	<?php if ( $index >=2 ) : ?>	
 		<div class="pafe-card-right">
 			<div class="pafe-card-right__inner">
-				<a class="pafe-card-right__thumbnail" href="<?php echo get_permalink(); ?>" style="background-image: url('<?php echo get_the_post_thumbnail_url();?>');">
+				<a class="pafe-card-right__thumbnail" href="<?php echo esc_url(get_permalink()); ?>" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url());?>');">
 				</a>
 				<div class="pafe-card-right__content">			
-					<a href="<?php echo get_permalink(); ?>"><div class="pafe-card-right__title"><?php echo get_the_title(); ?></div></a>
+					<a href="<?php echo esc_url(get_permalink()); ?>"><div class="pafe-card-right__title"><?php echo wp_kses_post(get_the_title()); ?></div></a>
 					<?php if ($excerpt == 'yes'): ?>
 					<div class="pafe-card-right__description" >
-						<?php echo get_the_excerpt(); ?>
+						<?php echo wp_kses_post(get_the_excerpt()); ?>
 					</div>
 					<?php endif; ?>
 					<div class="pafe-card-right__info"> 

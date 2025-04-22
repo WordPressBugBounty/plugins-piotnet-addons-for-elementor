@@ -30,16 +30,16 @@
 ?>				 
 	<div class="pafe-product-tabs__result-inner">
 		<div class="pafe-product-tabs__inner">  
-			<a class="pafe-product-tabs__thumbnail" href="<?php echo get_permalink(); ?>">
-				<div class="pafe-product-tabs__thumbnail-img" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"> </div>
+			<a class="pafe-product-tabs__thumbnail" href="<?php echo esc_url(get_permalink()); ?>">
+				<div class="pafe-product-tabs__thumbnail-img" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url()); ?>');"> </div>
 			</a>
 			<div class="pafe-product-tabs__content">  
-				<a href="<?php echo get_permalink(); ?>" >
-					<span class="pafe-product-tabs__title"><?php echo get_the_title(); ?></span>
+				<a href="<?php echo esc_url(get_permalink()); ?>" >
+					<span class="pafe-product-tabs__title"><?php echo wp_kses_post(get_the_title()); ?></span>
 				</a>
 				
 				<div class="pafe-product-tabs__button"> 
-					<a href="?add-to-cart=<?php echo get_the_ID(); ?>" class="qn_btn">Mua ngay</a>
+					<a href="?add-to-cart=<?php echo esc_attr(get_the_ID()); ?>" class="qn_btn">Mua ngay</a>
 				</div>
 			</div> 
 		</div>

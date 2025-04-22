@@ -51,7 +51,7 @@ class PAFE_Before_After_Image_Comparison_Slider extends \Elementor\Widget_Base {
 		$this->add_control(
 			'pafe_before_after_image_comparison_slider_image_before',
 			[
-				'label' => __( 'Before Image', 'elementor' ),
+				'label' => __( 'Before Image', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
 				'dynamic' => [
 					'active' => true,
@@ -65,7 +65,7 @@ class PAFE_Before_After_Image_Comparison_Slider extends \Elementor\Widget_Base {
 		$this->add_control(
 			'pafe_before_after_image_comparison_slider_image_after',
 			[
-				'label' => __( 'After Image', 'elementor' ),
+				'label' => __( 'After Image', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
 				'dynamic' => [
 					'active' => true,
@@ -107,7 +107,7 @@ class PAFE_Before_After_Image_Comparison_Slider extends \Elementor\Widget_Base {
 		$this->add_control(
 			'pafe_before_after_image_comparison_slider_image_orientation',
 			[
-				'label' => __( 'Orientation', 'elementor' ),
+				'label' => __( 'Orientation', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
 					'horizontal' => 'Horizontal',
@@ -120,7 +120,7 @@ class PAFE_Before_After_Image_Comparison_Slider extends \Elementor\Widget_Base {
 		$this->add_control(
 			'pafe_before_after_image_comparison_slider_image_before_label',
 			[
-				'label' => __( 'Before Label', 'elementor' ),
+				'label' => __( 'Before Label', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => 'Before',
 			]
@@ -129,7 +129,7 @@ class PAFE_Before_After_Image_Comparison_Slider extends \Elementor\Widget_Base {
 		$this->add_control(
 			'pafe_before_after_image_comparison_slider_image_after_label',
 			[
-				'label' => __( 'After Label', 'elementor' ),
+				'label' => __( 'After Label', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => 'After',
 			]

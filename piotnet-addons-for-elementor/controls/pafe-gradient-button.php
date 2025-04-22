@@ -37,17 +37,17 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->start_controls_tab(
 			'pafe_gradient_button_normal',
 			[
-				'label' => __( 'Normal', 'elementor' ),
+				'label' => __( 'Normal', 'pafe' ),
 			]
 		);
 
 		$element->add_control(
 			'pafe_gradient_button_color',
 			[
-				'label' => _x( 'Color', 'Background Control', 'elementor' ),
+				'label' => _x( 'Color', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#670093',
-				'title' => _x( 'Background Color', 'Background Control', 'elementor' ),
+				'title' => _x( 'Background Color', 'Background Control', 'pafe' ),
 				'selectors' => [
 					'{{WRAPPER}} a.elementor-button, {{WRAPPER}} .elementor-button' => 'background-color: {{VALUE}};',
 				],
@@ -60,7 +60,7 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_color_stop',
 			[
-				'label' => _x( 'Location', 'Background Control', 'elementor' ),
+				'label' => _x( 'Location', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ '%' ],
 				'default' => [
@@ -77,7 +77,7 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_color_b',
 			[
-				'label' => _x( 'Second Color', 'Background Control', 'elementor' ),
+				'label' => _x( 'Second Color', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#f2295b',
 				'render_type' => 'ui',
@@ -90,7 +90,7 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_color_b_stop',
 			[
-				'label' => _x( 'Location', 'Background Control', 'elementor' ),
+				'label' => _x( 'Location', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ '%' ],
 				'default' => [
@@ -107,11 +107,11 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_gradient_type',
 			[
-				'label' => _x( 'Type', 'Background Control', 'elementor' ),
+				'label' => _x( 'Type', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'linear' => _x( 'Linear', 'Background Control', 'elementor' ),
-					'radial' => _x( 'Radial', 'Background Control', 'elementor' ),
+					'linear' => _x( 'Linear', 'Background Control', 'pafe' ),
+					'radial' => _x( 'Radial', 'Background Control', 'pafe' ),
 				],
 				'default' => 'linear',
 				'render_type' => 'ui',
@@ -124,7 +124,7 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_gradient_angle',
 			[
-				'label' => _x( 'Angle', 'Background Control', 'elementor' ),
+				'label' => _x( 'Angle', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'deg' ],
 				'default' => [
@@ -149,18 +149,18 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_gradient_position',
 			[
-				'label' => _x( 'Position', 'Background Control', 'elementor' ),
+				'label' => _x( 'Position', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'center center' => _x( 'Center Center', 'Background Control', 'elementor' ),
-					'center left' => _x( 'Center Left', 'Background Control', 'elementor' ),
-					'center right' => _x( 'Center Right', 'Background Control', 'elementor' ),
-					'top center' => _x( 'Top Center', 'Background Control', 'elementor' ),
-					'top left' => _x( 'Top Left', 'Background Control', 'elementor' ),
-					'top right' => _x( 'Top Right', 'Background Control', 'elementor' ),
-					'bottom center' => _x( 'Bottom Center', 'Background Control', 'elementor' ),
-					'bottom left' => _x( 'Bottom Left', 'Background Control', 'elementor' ),
-					'bottom right' => _x( 'Bottom Right', 'Background Control', 'elementor' ),
+					'center center' => _x( 'Center Center', 'Background Control', 'pafe' ),
+					'center left' => _x( 'Center Left', 'Background Control', 'pafe' ),
+					'center right' => _x( 'Center Right', 'Background Control', 'pafe' ),
+					'top center' => _x( 'Top Center', 'Background Control', 'pafe' ),
+					'top left' => _x( 'Top Left', 'Background Control', 'pafe' ),
+					'top right' => _x( 'Top Right', 'Background Control', 'pafe' ),
+					'bottom center' => _x( 'Bottom Center', 'Background Control', 'pafe' ),
+					'bottom left' => _x( 'Bottom Left', 'Background Control', 'pafe' ),
+					'bottom right' => _x( 'Bottom Right', 'Background Control', 'pafe' ),
 				],
 				'default' => 'center center',
 				'selectors' => [
@@ -178,17 +178,17 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->start_controls_tab(
 			'pafe_gradient_button_hover',
 			[
-				'label' => __( 'Hover', 'elementor' ),
+				'label' => __( 'Hover', 'pafe' ),
 			]
 		);
 
 		$element->add_control(
 			'pafe_gradient_button_hover_color',
 			[
-				'label' => _x( 'Color', 'Background Control', 'elementor' ),
+				'label' => _x( 'Color', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '',
-				'title' => _x( 'Background Color', 'Background Control', 'elementor' ),
+				'title' => _x( 'Background Color', 'Background Control', 'pafe' ),
 				'selectors' => [
 					'{{WRAPPER}} a.elementor-button:hover, {{WRAPPER}} .elementor-button:hover' => 'background-color: {{VALUE}};',
 				],
@@ -201,7 +201,7 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_hover_color_stop',
 			[
-				'label' => _x( 'Location', 'Background Control', 'elementor' ),
+				'label' => _x( 'Location', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ '%' ],
 				'default' => [
@@ -218,7 +218,7 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_hover_color_b',
 			[
-				'label' => _x( 'Second Color', 'Background Control', 'elementor' ),
+				'label' => _x( 'Second Color', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#f2295b',
 				'render_type' => 'ui',
@@ -231,7 +231,7 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_hover_color_b_stop',
 			[
-				'label' => _x( 'Location', 'Background Control', 'elementor' ),
+				'label' => _x( 'Location', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ '%' ],
 				'default' => [
@@ -248,11 +248,11 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_hover_gradient_type',
 			[
-				'label' => _x( 'Type', 'Background Control', 'elementor' ),
+				'label' => _x( 'Type', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'linear' => _x( 'Linear', 'Background Control', 'elementor' ),
-					'radial' => _x( 'Radial', 'Background Control', 'elementor' ),
+					'linear' => _x( 'Linear', 'Background Control', 'pafe' ),
+					'radial' => _x( 'Radial', 'Background Control', 'pafe' ),
 				],
 				'default' => 'linear',
 				'render_type' => 'ui',
@@ -265,7 +265,7 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_hover_gradient_angle',
 			[
-				'label' => _x( 'Angle', 'Background Control', 'elementor' ),
+				'label' => _x( 'Angle', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'deg' ],
 				'default' => [
@@ -290,18 +290,18 @@ class PAFE_Gradient_Button extends \Elementor\Widget_Base {
 		$element->add_control(
 			'pafe_gradient_button_hover_gradient_position',
 			[
-				'label' => _x( 'Position', 'Background Control', 'elementor' ),
+				'label' => _x( 'Position', 'Background Control', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'center center' => _x( 'Center Center', 'Background Control', 'elementor' ),
-					'center left' => _x( 'Center Left', 'Background Control', 'elementor' ),
-					'center right' => _x( 'Center Right', 'Background Control', 'elementor' ),
-					'top center' => _x( 'Top Center', 'Background Control', 'elementor' ),
-					'top left' => _x( 'Top Left', 'Background Control', 'elementor' ),
-					'top right' => _x( 'Top Right', 'Background Control', 'elementor' ),
-					'bottom center' => _x( 'Bottom Center', 'Background Control', 'elementor' ),
-					'bottom left' => _x( 'Bottom Left', 'Background Control', 'elementor' ),
-					'bottom right' => _x( 'Bottom Right', 'Background Control', 'elementor' ),
+					'center center' => _x( 'Center Center', 'Background Control', 'pafe' ),
+					'center left' => _x( 'Center Left', 'Background Control', 'pafe' ),
+					'center right' => _x( 'Center Right', 'Background Control', 'pafe' ),
+					'top center' => _x( 'Top Center', 'Background Control', 'pafe' ),
+					'top left' => _x( 'Top Left', 'Background Control', 'pafe' ),
+					'top right' => _x( 'Top Right', 'Background Control', 'pafe' ),
+					'bottom center' => _x( 'Bottom Center', 'Background Control', 'pafe' ),
+					'bottom left' => _x( 'Bottom Left', 'Background Control', 'pafe' ),
+					'bottom right' => _x( 'Bottom Right', 'Background Control', 'pafe' ),
 				],
 				'default' => 'center center',
 				'selectors' => [

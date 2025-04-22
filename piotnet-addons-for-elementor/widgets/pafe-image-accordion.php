@@ -108,7 +108,7 @@ class PAFE_Image_Accordion extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'show_label' => true,
                 'fields' => $repeater->get_controls(),
-                'title_field' => __('{{{pafe_image_accordion_item_title}}}'),
+                'title_field' => __('{{{pafe_image_accordion_item_title}}}', 'pafe'),
             ]
         );
         $this->end_controls_section();
@@ -357,7 +357,7 @@ class PAFE_Image_Accordion extends \Elementor\Widget_Base
                     'center right' => _x('Center Right', 'Background Control', 'pafe'),
                     'top center' => _x('Top Center', 'Background Control', 'pafe'),
                     'top left' => _x('Top Left', 'Background Control', 'pafe'),
-                    'top right' => _x('Top Right', 'Background Control', 'elementor'),
+                    'top right' => _x('Top Right', 'Background Control', 'pafe'),
                     'bottom center' => _x('Bottom Center', 'Background Control', 'pafe'),
                     'bottom left' => _x('Bottom Left', 'Background Control', 'pafe'),
                     'bottom right' => _x('Bottom Right', 'Background Control', 'pafe'),

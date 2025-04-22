@@ -3,9 +3,10 @@
  * Plugin Name: Piotnet Addons For Elementor
  * Description: Piotnet Addons For Elementor (PAFE) adds many new features for Elementor
  * Plugin URI:  https://pafe.piotnet.com/
- * Version:     2.4.34
+ * Version:     2.4.35
  * Author:      Piotnet
  * Author URI:  https://piotnet.com/
+ * License:     GPLv2 or later
  * Text Domain: pafe
  * Elementor tested up to: 3.11.0
  * Elementor Pro tested up to: 3.11.0
@@ -13,7 +14,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'PAFE_VERSION', '2.4.34' );
+define( 'PAFE_VERSION', '2.4.35' );
 
 define( 'PAFE_DIR', plugin_dir_path(__FILE__));
 define( 'PAFE_URL', plugins_url( '/', __FILE__ ) );
@@ -119,7 +120,7 @@ final class Piotnet_Addons_For_Elementor {
 	}
 
 	public function enqueue_footer() {
-		echo '<div data-pafe-ajax-url="'. admin_url( 'admin-ajax.php' ) .'"></div>';
+		echo '<div data-pafe-ajax-url="'. esc_url(admin_url( 'admin-ajax.php' )) .'"></div>';
 	}
 
 	public function init() {
@@ -177,7 +178,7 @@ final class Piotnet_Addons_For_Elementor {
 	        $response = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($post_id);
 	        return $response;
         }else{
-            return _e('<div class="elementor-alert elementor-alert-danger">You do not have permission to view this post.</div>');
+            return wp_kses_post('<div class="elementor-alert elementor-alert-danger">You do not have permission to view this post.</div>');
         }
 	}
 
@@ -189,7 +190,7 @@ final class Piotnet_Addons_For_Elementor {
     public function custom_column( $column, $post_id ) {
         switch ( $column ) {
             case 'pafe-shortcode' :
-                echo '<input class="elementor-shortcode-input" type="text" readonly="" onfocus="this.select()" value="[pafe-template id=' . '&quot;' . $post_id . '&quot;' . ']">'; 
+                echo '<input class="elementor-shortcode-input" type="text" readonly="" onfocus="this.select()" value="[pafe-template id=' . '&quot;' . esc_attr($post_id) . '&quot;' . ']">'; 
                 break;
         }
     }
@@ -213,13 +214,14 @@ final class Piotnet_Addons_For_Elementor {
 
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
 
+        // translators: %1$s is the plugin name, %2$s is the required plugin name.
 		$message = sprintf(
 			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'pafe' ),
 			'<strong>' . esc_html__( 'Piotnet Addons For Elementor', 'pafe' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'pafe' ) . '</strong>'
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', wp_kses_post($message) );
 
 	}
 
@@ -235,7 +237,7 @@ final class Piotnet_Addons_For_Elementor {
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', wp_kses_post($message) );
 
 	}
 
@@ -251,7 +253,7 @@ final class Piotnet_Addons_For_Elementor {
 			 self::MINIMUM_PHP_VERSION
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', wp_kses_post($message) );
 
 	}
 
@@ -297,13 +299,13 @@ final class Piotnet_Addons_For_Elementor {
 		$features = $features_free + $features_pro;
 
 		foreach ($features as $feature) {
-			if ( defined('PAFE_VERSION') && !$feature['pro'] || defined('PAFE_PRO_VERSION') && $feature['pro'] ) {
-				register_setting( 'piotnet-addons-for-elementor-features-settings-group', $feature['option'] );
+			if ( defined('PAFE_VERSION') && !$feature['pro'] || defined(constant_name: 'PAFE_PRO_VERSION') && $feature['pro'] ) {
+				register_setting( 'piotnet-addons-for-elementor-features-settings-group', $feature['option'], ['sanitize_callback' => 'sanitize_text_field'] );
 			}
 		}
 
-		register_setting( 'piotnet-addons-for-elementor-pro-settings-group', 'piotnet-addons-for-elementor-pro-username' );
-		register_setting( 'piotnet-addons-for-elementor-pro-settings-group', 'piotnet-addons-for-elementor-pro-password' );
+		register_setting( 'piotnet-addons-for-elementor-pro-settings-group', 'piotnet-addons-for-elementor-pro-username', ['sanitize_callback' => 'sanitize_text_field'] );
+		register_setting( 'piotnet-addons-for-elementor-pro-settings-group', 'piotnet-addons-for-elementor-pro-password', ['sanitize_callback' => 'sanitize_text_field'] );
 		
 	}
 

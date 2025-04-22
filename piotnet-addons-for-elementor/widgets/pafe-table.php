@@ -148,7 +148,7 @@ class PAFE_Table extends \Elementor\Widget_Base {
 					'type' => \Elementor\Controls_Manager::REPEATER,
 					'show_label' => true,
 					'fields' => $repeater->get_controls(),
-					'title_field' => __('{{{pafe_table_head_item_title}}}'),
+					'title_field' => __('{{{pafe_table_head_item_title}}}', 'pafe'),
 					// 'condition' => [
 					// 	'pafe_table_layout_type' => 'layout1',
 					// 	'pafe_table_layout_type' => 'layout2',
@@ -372,7 +372,7 @@ class PAFE_Table extends \Elementor\Widget_Base {
 					'type' => \Elementor\Controls_Manager::REPEATER,
 					'show_label' => true,
 					'fields' => $repeater_body->get_controls(),
-					'title_field' => __('{{{pafe_table_body_row_type}}}: {{{pafe_table_body_item_title}}}'),
+					'title_field' => __('{{{pafe_table_body_row_type}}}: {{{pafe_table_body_item_title}}}', 'pafe'),
 				]
 			);
 

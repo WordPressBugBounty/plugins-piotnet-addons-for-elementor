@@ -11,22 +11,25 @@
 		}
 		public function get_youtube_title($ref) {
 	        $json = file_get_contents('https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=' . $ref . '&format=json');
-	        $details = json_decode($json, true); //parse the JSON into an array
-	        return $details['title']; //return the video title
+	        $details = json_decode($json, true);
+	        return $details['title']; 
 		}
 
         public function includes() {
             require_once(__DIR__ . '/compatibility/wpml/pafe-video-list-wpml.php');
         }
-		public function curl_get($url) {
-		    $curl = curl_init($url);
-		    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		    curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-		    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-		    $return = curl_exec($curl);
-		    curl_close($curl);
-		    return $return;
-		}
+        public function curl_get( $url ) {
+            $response = wp_remote_get( $url, array(
+                'timeout' => 30,
+                'redirection' => 5,
+            ) );
+        
+            if ( is_wp_error( $response ) ) {
+                return false;
+            }
+            return wp_remote_retrieve_body( $response );
+        }
+
 		public function vimeo_object($video_url) {
 			$oembed_endpoint = 'http://vimeo.com/api/oembed';
 			// Create the URLs
@@ -123,7 +126,7 @@
 					'type' => \Elementor\Controls_Manager::REPEATER,
 					'show_label' => true,
 					'fields' => $repeater->get_controls(),
-					'title_field' => __( '{{{pafe_video_playlist_item_title}}}' ),
+					'title_field' => __( '{{{pafe_video_playlist_item_title}}}', "pafe" ),
 					'description' => __( "Video URL eg: Youtube, Vimeo,...", "pafe" ), 
 				]
 			); 
@@ -302,7 +305,7 @@
 											$thumbnail= $hash[0]['thumbnail_medium'];  
 											$iframe = '<iframe src="https://player.vimeo.com/video/'.$video_id.'?title=0&byline=0&portrait=0" frameborder="0" allow="'.$auto.' fullscreen" allowfullscreen></iframe>';
 										} else {
-											parse_str( parse_url( $video_link, PHP_URL_QUERY ), $my_array_of_vars );
+											parse_str( wp_parse_url( $video_link, PHP_URL_QUERY ), $my_array_of_vars );
 											$video_id = $my_array_of_vars['v'];		
 											$auto = '';
 											if ($settings['pafe_video_playlist_autoplay'] == 'yes') {
@@ -312,7 +315,7 @@
 											$title = $this->get_youtube_title($video_id);
 										 	$iframe = '<iframe src="https://www.youtube.com/embed/'.$video_id.'?&autoplay=1" frameborder="0" allow="accelerometer;'.$auto.' encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 										}
-										echo $iframe;			
+										echo wp_kses_post($iframe);		
 
 							endif; endif; endfor; ?>	 
 					</div>
@@ -343,7 +346,7 @@
 											$thumbnail= $hash[0]['thumbnail_medium'];  
 											$iframe = '<iframe src="https://player.vimeo.com/video/'.$video_id.'?autoplay=1?title=0&byline=0&portrait=0" frameborder="0" allow="'.$auto.' fullscreen" allowfullscreen></iframe>';
 										} else {
-											parse_str( parse_url( $video_link, PHP_URL_QUERY ), $my_array_of_vars );
+											parse_str( wp_parse_url( $video_link, PHP_URL_QUERY ), $my_array_of_vars );
 											$video_id = $my_array_of_vars['v'];		
 											$auto = '';
 											if ($settings['pafe_video_playlist_autoplay'] == 'yes') {

@@ -97,7 +97,7 @@
 					'type' => \Elementor\Controls_Manager::REPEATER,
 					'show_label' => true,
 					'fields' => $repeater->get_controls(),
-					'title_field' => __('{{{pafe_sales_pop_item_title}}}'),				
+					'title_field' => __('{{{pafe_sales_pop_item_title}}}', 'pafe'),				
 				]
 			); 
 			$this->end_controls_section();

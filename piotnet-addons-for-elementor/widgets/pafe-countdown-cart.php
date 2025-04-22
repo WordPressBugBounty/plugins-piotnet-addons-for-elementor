@@ -136,19 +136,19 @@
 			$this->add_responsive_control(
 	   			'pafe_countdown_cart_text_align',
 	    			[
-	  				'label' => __( 'Alignment', 'elementor' ),
+	  				'label' => __( 'Alignment', 'pafe' ),
 	 				'type' => \Elementor\Controls_Manager::CHOOSE,
 	   				'options' => [
 	  					'left' => [
-	 						'title' => __( 'Left', 'elementor' ),
+	 						'title' => __( 'Left', 'pafe' ),
 	  					    'icon' => 'eicon-text-align-left',
 	   					],
      					'center' => [
-  						    'title' => __( 'Center', 'elementor' ),
+  						    'title' => __( 'Center', 'pafe' ),
    						    'icon' => 'eicon-text-align-center',
     					],
     					'right' => [
-   						    'title' => __( 'Right', 'elementor' ),
+   						    'title' => __( 'Right', 'pafe' ),
    						    'icon' => 'eicon-text-align-right',
    					    ],
 	   				],
