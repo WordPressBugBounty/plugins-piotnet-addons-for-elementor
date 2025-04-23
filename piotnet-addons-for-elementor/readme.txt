@@ -4,7 +4,7 @@ Tags: pafe, elementor addons, gradient text, gradient button, image carousel mul
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.4
-Stable tag: 2.4.35
+Stable tag: 2.4.36
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -119,6 +119,8 @@ Piotnet Addons For Elementor (PAFE) adds many new features for Elementor
 7. Screenshot 7
 
 == Changelog ==
+= 2.4.36 =
+* Fix PHP issue.
 = 2.4.35 =
 * Fix Escape HTML output issues. Update text domain.
 = 2.4.34 =
