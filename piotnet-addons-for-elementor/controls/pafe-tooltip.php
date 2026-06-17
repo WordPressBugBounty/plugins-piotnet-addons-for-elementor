@@ -267,7 +267,7 @@ require_once( __DIR__ . '/controls-manager.php' );
 				if ($settings['pafe_tooltip_content_type'] == 'content') {
 					$content = wp_kses_post($settings['pafe_tooltip_content_wysiwyg']);
 				} elseif ($settings['pafe_tooltip_content_type'] == 'image') {
-					$content = '<img src="'. $settings['pafe_tooltip_content_image']['url'] . '"alt="">';
+					$content = '<img src="'. $settings['pafe_tooltip_content_image']['url'] . '">';
 				} elseif ($settings['pafe_tooltip_content_type'] == 'saved_template') {
 					$content = do_shortcode($settings['pafe_tooltip_content_saved_template']);
 				}

@@ -3,7 +3,7 @@
  * Plugin Name: Piotnet Addons For Elementor
  * Description: Piotnet Addons For Elementor (PAFE) adds many new features for Elementor
  * Plugin URI:  https://pafe.piotnet.com/
- * Version:     2.4.36
+ * Version:     2.4.37
  * Author:      Piotnet
  * Author URI:  https://piotnet.com/
  * License:     GPLv2 or later
@@ -14,7 +14,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'PAFE_VERSION', '2.4.36' );
+define( 'PAFE_VERSION', '2.4.37' );
 
 define( 'PAFE_DIR', plugin_dir_path(__FILE__));
 define( 'PAFE_URL', plugins_url( '/', __FILE__ ) );
@@ -74,8 +74,6 @@ final class Piotnet_Addons_For_Elementor {
 		add_filter( 'elementor/init', [ $this, 'add_pafe_tab'], 10,1);
 		add_filter( 'elementor/controls/get_available_tabs_controls', [ $this, 'add_pafe_tab'], 10,1);
 		
-		require_once( __DIR__ . '/inc/features.php' );
-
 		if ( !defined('PAFE_PRO_VERSION') ) {
 			add_shortcode('pafe-template', [ $this, 'pafe_template_elementor' ] );
 
@@ -113,6 +111,7 @@ final class Piotnet_Addons_For_Elementor {
 
 	public function enqueue_scripts_widget() {
 		wp_register_script( 'pafe-widget-free', plugin_dir_url( __FILE__ ) . 'assets/js/minify/widget.min.js', array('jquery'), PAFE_VERSION );
+        wp_localize_script('pafe-widget-free', 'pafe_js_data', ['nonce' => wp_create_nonce('pafe_free_nonce')]);
 	}
 
 	public function enqueue_styles_widget() {
@@ -211,7 +210,7 @@ final class Piotnet_Addons_For_Elementor {
 	}
 
 	public function admin_notice_missing_main_plugin() {
-
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
 
         // translators: %1$s is the plugin name, %2$s is the required plugin name.
@@ -226,7 +225,7 @@ final class Piotnet_Addons_For_Elementor {
 	}
 
 	public function admin_notice_minimum_elementor_version() {
-
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
 
 		$message = sprintf(
@@ -242,7 +241,7 @@ final class Piotnet_Addons_For_Elementor {
 	}
 
 	public function admin_notice_minimum_php_version() {
-
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
 
 		$message = sprintf(

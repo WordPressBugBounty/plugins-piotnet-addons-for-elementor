@@ -12,7 +12,8 @@
             var data = {   
                 'action': 'pafe_product_tabs', 
                 'posts_per_page': posts_per_page, 
-                'term_id': terms_id, 
+                'term_id': terms_id,
+                nonce: pafe_js_data?.nonce
             };
             $(this).addClass('actives');
             $('[pafe-product-tabs__filter-item]').not(this).removeClass('actives');

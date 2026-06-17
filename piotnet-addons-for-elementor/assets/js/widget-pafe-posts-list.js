@@ -1,7 +1,7 @@
 (function ($) {
     var WidgetPafePostsListHandler = function ($scope, $) {
         $items = $scope.find('[data-pafe-posts-list-filter-item]');
-        $items.click(function() { 
+        $items.click(function() {
             var $wrapper = $(this).closest('[data-pafe-posts-list]'),
                 $result = $wrapper.find('[data-pafe-tab-content-post]');          
             var options = JSON.parse($wrapper.attr('data-pafe-posts-list-option')),
@@ -15,7 +15,8 @@
                 layout = options.layout_type; 
             $result.css('opacity', '0.5');             
             var data = {  
-                'action': 'pafe_posts_list', 
+                'action': 'pafe_posts_list',
+                nonce: pafe_js_data?.nonce,
                 'post_type': post_type,  
                 'taxonomy': taxonomy,  
                 'posts_per_page': posts_per_page,
